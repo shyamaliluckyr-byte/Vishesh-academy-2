@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishesh Academy, Kanpur - Futuristic Education Hub</title>
+    <title>Vishesh Academy, Kanpur - Ultra-Futuristic Education Hub</title>
     <style>
         * {
             margin: 0;
@@ -38,9 +38,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             box-shadow: 0 8px 32px rgba(255, 0, 255, 0.3);
-        }
-        .neon-glow {
-            box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
         }
         header {
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.8), rgba(255, 255, 255, 0.1));
@@ -119,6 +116,39 @@
             0% { transform: rotateX(0deg) rotateY(0deg); }
             100% { transform: rotateX(360deg) rotateY(360deg); }
         }
+        .rolling-rect {
+            width: 200px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            animation: flip 4s infinite linear;
+            box-shadow: 0 0 20px #ff00ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        @keyframes flip {
+            0%, 50% { transform: rotateY(0deg); }
+            50.01%, 100% { transform: rotateY(180deg); }
+        }
+        .rolling-rect::before {
+            content: 'Vishesh Academy';
+            position: absolute;
+            backface-visibility: hidden;
+        }
+        .rolling-rect::after {
+            content: 'Enroll Now';
+            position: absolute;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+        }
         section {
             padding: 60px 20px;
             text-align: center;
@@ -165,6 +195,10 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             background: rgba(255, 255, 255, 0.1);
             color: white;
+            transition: box-shadow 0.3s ease;
+        }
+        .smart-tutor input:focus, .smart-tutor select:focus {
+            box-shadow: 0 0 10px #ff00ff;
         }
         .smart-tutor button {
             padding: 12px;
@@ -208,6 +242,11 @@
             padding: 40px 20px;
             text-align: center;
             box-shadow: 0 0 30px #ff00ff;
+            animation: gradientShift 3s infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         footer {
             background: rgba(255, 0, 255, 0.8);
@@ -225,39 +264,42 @@
 
     <!-- Hero Section -->
     <header>
-        <h1>Welcome to Vishesh Academy</h1>
+        <h1>🌟 Welcome to Vishesh Academy</h1>
         <h2>✨ Your Success, Our Mission</h2>
-        <p>Expert Coaching for CBSE & ICSE Students (Classes 5–10)<br>Empowering Minds • Strengthening Concepts • Achieving Excellence</p>
+        <p>Empowering Students with Precision Learning<br>Expert Coaching for CBSE & ICSE | Classes 5–12</p>
         <a href="#smart-tutor" class="btn btn-primary">👉 Enroll Now</a>
         <a href="#contact" class="btn btn-secondary">👉 Contact Us</a>
         <div class="dice"></div>
+        <div class="rolling-rect"></div>
     </header>
 
-    <!-- Courses Section -->
+    <!-- Academic Programs Section -->
     <section>
-        <h3>Courses We Offer</h3>
+        <h3>🎓 Our Learning Programs</h3>
         <div class="cards">
             <div class="card">✔ CBSE Coaching<br>Conceptual Clarity & Exam Mastery</div>
             <div class="card">✔ ICSE Coaching<br>Conceptual Clarity & Exam Mastery</div>
-            <div class="card">✔ Classes 5–10<br>Comprehensive Learning</div>
+            <div class="card">✔ Science & Commerce Streams<br>Specialized Guidance</div>
+            <div class="card">✔ Classes 5–12<br>Comprehensive Learning</div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
     <section>
-        <h3>Why Choose Us</h3>
+        <h3>🌟 Why Students Trust Us</h3>
         <div class="cards">
-            <div class="card">✔ Experienced Faculty</div>
-            <div class="card">✔ Personal Attention</div>
-            <div class="card">✔ Regular Tests</div>
-            <div class="card">✔ Doubt Solving Sessions</div>
+            <div class="card">✔ Expert Faculty</div>
+            <div class="card">✔ Personalized Attention</div>
+            <div class="card">✔ Concept-Driven Teaching</div>
+            <div class="card">✔ Regular Assessments</div>
             <div class="card">✔ Performance Tracking</div>
+            <div class="card">✔ Doubt Resolution System</div>
         </div>
     </section>
 
     <!-- Smart Tutor Recommendation -->
     <section id="smart-tutor">
-        <h3>🧠 Smart Tutor Recommendation</h3>
+        <h3>🧠 Smart Tutor Recommendation System</h3>
         <div class="smart-tutor glass">
             <form id="tutorForm">
                 <input type="text" id="name" placeholder="Your Name" required>
@@ -277,10 +319,20 @@
                     <option value="CBSE">CBSE</option>
                     <option value="ICSE">ICSE</option>
                 </select>
+                <select id="subject" required>
+                    <option value="">Select Subject</option>
+                    <option value="Math">Mathematics</option>
+                    <option value="Science">Science</option>
+                    <option value="BST">Business Studies (BST)</option>
+                    <option value="Economics">Economics</option>
+                    <option value="Accounts">Accounts</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                </select>
                 <button type="submit">Get Recommendation</button>
             </form>
             <div id="result" class="result">
-                <h4>Recommended Tutor</h4>
+                <h4>Recommended Mentor</h4>
                 <p id="tutorInfo"></p>
             </div>
         </div>
@@ -288,8 +340,8 @@
 
     <!-- Location Section -->
     <section>
-        <h3>Visit Our Academy</h3>
-        <p>Conveniently located in Kanpur for easy accessibility.<br>Address: 128/169, Sanya Ln, Block K, Kidwai Nagar, Kanpur, Uttar Pradesh 208011</p>
+        <h3>📍 Visit Our Campus</h3>
+        <p>Strategically Located in Kanpur for Easy Accessibility.<br>Address: 128/169, Sanya Ln, Block K, Kidwai Nagar, Kanpur, Uttar Pradesh 208011</p>
         <div class="map">
             <iframe src="https://www.google.com/maps?q=128/169,%20Sanya%20Ln,%20Block%20K,%20Kidwai%20Nagar,%20Kanpur,%20Uttar%20Pradesh%20208011&output=embed" allowfullscreen="" loading="lazy"></iframe>
         </div>
@@ -297,20 +349,20 @@
 
     <!-- Contact Section -->
     <section id="contact">
-        <h3>Get in Touch</h3>
+        <h3>📞 Connect With Us</h3>
         <p>📱 Call / WhatsApp: 7275011424</p>
     </section>
 
     <!-- CTA Banner -->
     <section class="cta-banner">
-        <h3>Admissions Open for Classes 5–10</h3>
-        <p>✨ Start Your Academic Success Journey Today!</p>
+        <h3>✨ Admissions Open | Classes 5–12</h3>
+        <p>✨ Begin Your Success Journey Today</p>
         <a href="#smart-tutor" class="btn btn-primary">👉 Enroll Now</a>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>Vishesh Academy, Kanpur<br>CBSE & ICSE Coaching | Classes 5–10<br>📞 7275011424<br>📍 128/169, Sanya Ln, Block K, Kidwai Nagar, Kanpur, Uttar Pradesh 208011</p>
+        <p>Vishesh Academy, Kanpur<br>CBSE | ICSE | Science | Commerce<br>📞 7275011424<br>📍 <a href="https://maps.app.goo.gl/hg98Vaba9jjNGrcB7">Google Maps Link</a></p>
     </footer>
 
     <script>
@@ -319,13 +371,22 @@
             const name = document.getElementById('name').value;
             const classVal = parseInt(document.getElementById('class').value);
             const board = document.getElementById('board').value;
+            const subject = document.getElementById('subject').value;
             const resultDiv = document.getElementById('result');
             const tutorInfo = document.getElementById('tutorInfo');
 
-            if ((board === 'CBSE' || board === 'ICSE') && classVal >= 9 && classVal <= 12) {
-                tutorInfo.innerHTML = `👨‍🏫 Saurabh Sir<br>📞 7275011424`;
-            } else if (classVal >= 5 && classVal <= 8) {
-                tutorInfo.innerHTML = `👨‍🏫 Kshitij Sir<br>📞 8960876114`;
+            if (classVal >= 5 && classVal <= 8) {
+                tutorInfo.innerHTML = `👨‍🏫 Recommended Guide:<br>✨ Kshitij Sir<br>📞 8960876114`;
+            } else if (classVal >= 9 && classVal <= 12) {
+                if (subject === 'BST' || subject === 'Economics') {
+                    tutorInfo.innerHTML = `👨‍🏫 Subject Expert:<br>✨ Jitrendra Sir<br>📞 +91 89178 98990`;
+                } else if (subject === 'Accounts') {
+                    tutorInfo.innerHTML = `👨‍🏫 Accounts Specialist:<br>✨ Shashank Sir<br>📞 +91 86042 64274`;
+                } else if (subject === 'Chemistry') {
+                    tutorInfo.innerHTML = `👨‍🏫 Chemistry Expert:<br>✨ Shishir Sir<br>📞 +91 98398 68285`;
+                } else {
+                    tutorInfo.innerHTML = `👨‍🏫 Recommended Mentor:<br>✨ Saurabh Sir<br>📞 7275011424`;
+                }
             } else {
                 tutorInfo.innerHTML = 'No recommendation available for the selected criteria.';
             }
